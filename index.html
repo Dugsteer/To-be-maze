@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=" A fun, free  online grammar maze based on simple third person questions for learning English">
+    <meta name="keywords" content="Grammar questions maze drills English online">
+    <title>Grammar Maze - Questions</title>
+    <link rel="icon" type="image/png"
+    href="favicon.png";
+  />
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="csi.min.js"></script>
+</head>
+<body>
+
+<div class="loader-div" id="loaderDiv" onload = "checkForTop();">
+    <div class="loader-container">
+      <img class="ghost" src="img/maze.png" alt=""> 
+      
+    </div>
+  </div>
+
+    <div class="nav-bar" id="navbar">
+        <a href="index.html" class="nav-bar__logo">
+          <svg class="icon-header nav-bar__logo-img">
+            <use xlink:href="sprite2.svg#Buho" onclick="scrollUp()">
+            </use>
+          </svg>    </a>
+        <h3 class="nav-bar__title">Esl-Ology.Com</h3>
+        <div class="nav-bar__title-page">
+          <span class="nav-bar__title-page-main" id="pageTitle">QUESTIONS MAZE</span>
+      </div>
+      <div class="nav-bar__links">
+        <a href="index.html" class="nav-bar__link link3">Home</a>
+        <svg viewBox="0 0 100 80" width="40" height="20" onclick="toggler();" id="menu" class="menu">
+          <rect width="100" height="12"></rect>
+          <rect y="30" width="100" height="12"></rect>
+          <rect y="60" width="100" height="12"></rect>
+        </svg>     
+      </div>
+    </div>
+
+    <div id="wrapper" class="wrapper">
+
+          
+      <div class="sidebar-container" id="sidebar">
+        <div data-include="sidebar.html">
+        </div>
+      </div>
+
+        <div class="introduction">
+          <div class="introduction__img" id="mainpic">
+            <img src="img/minimaze.png" alt="decorative">
+            <div class="dot" id="dot"><img src="img/favicon.png" alt=""></div>
+          </div>
+          <div class="introduction__text">
+            <h1>AMAZING MAZES</h1>
+            <p>
+            Grammar mazes are a fun way of learning the difference between key elements of English grammar! In the online version, click on the correct phrase in order to reveal the answer and see if you can make it all the way through to the end. This grammar maze is based on asking questions in the third person. 
+            </p>
+          </div>
+        </div>
+
+        <div class="main">
+
+                    <div class="top">
+                      <p
+                        onclick="checkForMistakesOnLeft(this)"
+                        class="left-text"
+                        id="left-text"
+                      >
+                        How her name is?
+                      </p>
+                      <p
+                        onclick="checkForMistakesOnRight(this)"
+                        class="right-text"
+                        id="right-text"
+                      >
+                        What is her name?
+                      </p>
+                    </div>
+
+                    <div class="img-container" id="img-container">
+                      <div class="logout" id="logout">
+                      <img src="logout.png" alt="" />
+                    </div>
+                      <p class="top-text" id="topText">Her name is Peppa</p>
+
+                      <img id="image" src="img/maze-peppa/slide0.jpg" />
+                      <div class="after" id="after"></div>
+                    </div>
+                      
+
+                  <div class="final-page-good" id="good">
+                    <div class="onediv">
+                    <img src="img/flashes.png" alt="" />
+                    <img src="img/flashes.png" alt="" />
+                  </div>
+                  <div class="twodiv" onclick="window.location.reload();">
+                    <p class="fab" >You Did It!</p>
+                  </div>
+                  <div class="threediv">
+                    <img src="img/flashes.png" alt="" />
+                    <img src="img/thumbsOK.png" alt="" />
+                  </div>
+                    <!-- <img src="img/bigtick.png" alt="" /> -->
+                  </div>
+
+               
+              <div class="wronganswer" id="wronganswer">
+                  <p class="wrong-answer">Wrong. Try Again!</p>
+                  <img src="logoutReverse.svg" onclick="begin()" class="logout1 turned"/>
+                </div>
+              </div>
+              
+            
+          
+           
+  
+
+      <div class="links">
+        <p class="links__text">
+          Try our other TEFL games.
+        </p>
+        <div class="links__images">
+          <div class="links__images-1 figure">
+            <a href="flashcards-animals.html">
+            <img src="img/FlashcardAnimalpic.jpg" alt=""></a>
+              <figcaption>Animal Photo Flashcards</figcaption>
+          </div>
+          <div class="links__images-1 figure">
+            <a href="frogify-halloween.html">
+            <img src="img/frogify-image.jpg" alt=""></a>
+              <figcaption>A Fun Halloween Vocabulary Game</figcaption>
+          </div>
+      </div>
+
+
+    </div>
+</div>
+    <footer class="footer">
+        <div class="footer__copyright" id="footer">
+          <p>© 2020 Copyright Esl-ology.com & copyright owners.</p>
+          <p>Image credits <a href="questions-maze-credits.html">here</a>. Thanks, guys!</p>
+        </div>
+    </footer>
+
+  <div class="hidden"><img src="sprite2.svg" style="display: none">
+      <script>
+    <!--//--><![CDATA[//><!--
+    var images = new Array();
+      function preload(){
+        for(i=0; i<preload.arguments.length; i++){
+          images[i] = new Image();
+          images[i].src = preload.arguments[i];
+        }
+      }
+    preload(
+      "img/maze-peppa/slide0.jpg",
+  "img/maze-peppa/slide1.jpg",
+  "img/maze-peppa/slide2.jpg",
+  "img/maze-peppa/slide3.jpg",
+  "img/maze-peppa/slide4.jpg",
+  "img/maze-peppa/slide5.jpg",
+  "img/maze-peppa/slide6.jpg",
+  "img/maze-peppa/slide7.jpg",
+  "img/maze-peppa/slide8.jpg",
+  "img/maze-peppa/slide9.jpg",
+  "img/maze-peppa/slide10.jpg",
+  "img/maze-peppa/slide11.jpg"
+    )
+      //--><!]]>
+    </script>
+  </div>
+    
+    <script src="/script.js"></script>
+</body>
+</html>
