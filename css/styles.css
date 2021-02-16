@@ -312,9 +312,6 @@ h4 {
 .block {
   display: block; }
 
-.sidebar__subtitle:first-of-type {
-  background: #F75F1C; }
-
 .icon {
   margin-right: 3rem; }
 
@@ -343,7 +340,6 @@ h4 {
   @media only screen and (max-width: 37.5em) {
     .extra {
       top: 60%;
-      origin: center;
       width: 320px;
       height: 700px; } }
 
@@ -678,8 +674,8 @@ h4 {
   border-radius: 5px;
   box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1);
   width: 800px;
-  height: 540px;
-  grid-template-rows: 80px minmax(0, 1fr);
+  padding: 2rem 0;
+  grid-template-rows: 120px minmax(0, 1fr);
   grid-template-columns: 1fr; }
   @media only screen and (max-width: 62.5em) {
     .main {
@@ -697,84 +693,113 @@ h4 {
 
 .top {
   grid-row: 1/2;
-  height: 100%;
   width: 100%;
+  margin: 2rem 0;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: space-evenly; }
 
+.check {
+  width: 80px;
+  height: 80px;
+  cursor: pointer; }
+
+.check:hover {
+  transform: scale(1.03); }
+
+.check:active {
+  transform: translateY(2px); }
+
+.check img {
+  width: 100%;
+  height: 100%; }
+
+.remove {
+  width: 80px;
+  height: 80px;
+  cursor: pointer; }
+
+.remove:hover {
+  transform: scale(1.03); }
+
+.remove:active {
+  transform: translateY(2px); }
+
+.remove img {
+  width: 100%;
+  height: 100%; }
+
 .top-text {
   position: absolute;
-  left: 0%;
-  top: 40%;
+  display: block;
+  left: 20%;
+  top: 20%;
   color: white;
-  font-size: 4rem;
-  width: 100%;
+  font-size: 3.4rem;
+  width: 60%;
+  line-height: 4.5rem;
   z-index: 100;
   text-align: center; }
   @media only screen and (max-width: 50em) {
     .top-text {
-      font-size: 3rem; } }
+      font-size: 3rem;
+      line-height: 3.5rem; } }
   @media only screen and (max-width: 37.5em) {
     .top-text {
-      font-size: 2.4rem; } }
+      font-size: 2.4rem;
+      line-height: 3rem; } }
   @media only screen and (max-width: 28em) {
     .top-text {
-      font-size: 2.8rem; } }
+      font-size: 2.8rem;
+      line-height: 3rem; } }
 
 #logout {
   position: absolute;
-  height: 60px;
-  width: 60px;
-  top: 55%;
+  display: block;
+  height: 80px;
+  width: 80px;
+  top: 65%;
   visibility: visible;
-  color: white;
+  fill: #ffe164;
   z-index: 20; }
+  @media only screen and (max-width: 50em) {
+    #logout {
+      height: 50px;
+      width: 50px; } }
 
 #logout:hover {
   transform: scale(1.04); }
 
-.left-text,
-.right-text {
-  cursor: pointer;
+.question-text {
   font-size: 3rem;
   line-height: 3.6rem;
-  width: 300px;
-  margin-top: 2rem;
-  text-align: center;
-  transition: transform 1.2s ease; }
+  width: 400px;
+  text-align: center; }
   @media only screen and (max-width: 62.5em) {
-    .left-text,
-    .right-text {
+    .question-text {
       font-size: 2.4rem; } }
   @media only screen and (max-width: 37.5em) {
-    .left-text,
-    .right-text {
+    .question-text {
       font-size: 2rem;
       width: 180px; } }
   @media only screen and (max-width: 28em) {
-    .left-text,
-    .right-text {
+    .question-text {
       font-size: 2.6rem; } }
-
-.left-text:hover, .right-text:hover {
-  transform: scale(1.1);
-  text-decoration: underline; }
 
 .img-container {
   position: relative;
   grid-row: 2/3;
-  width: 700px;
-  height: 400px;
-  background-color: #ffe164;
+  width: 750px;
+  height: auto;
   display: flex;
+  margin-top: 2rem;
   border-radius: 8px;
   align-items: center;
   justify-content: center;
   justify-self: center;
   align-self: center;
-  z-index: 1;
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4); }
+  z-index: 1; }
   @media only screen and (max-width: 62.5em) {
     .img-container {
       width: 500px; } }
@@ -797,17 +822,14 @@ h4 {
   height: 100%;
   color: #fff; }
 
-.blue {
+.overlay {
   display: block;
   background: rgba(0, 0, 0, 0.5); }
 
 .img-container img {
-  max-height: 90%;
-  max-width: 90%;
-  width: auto;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%); }
+  height: auto;
+  width: 100%;
+  border-radius: 8px; }
 
 #good {
   position: absolute;
@@ -867,7 +889,7 @@ h4 {
 
 .wronganswer {
   position: absolute;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;

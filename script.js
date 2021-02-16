@@ -5,12 +5,10 @@ const extra = document.getElementById("info");
 const mainpic = document.getElementById("mainpic");
 const blue = window.matchMedia("(max-width: 800px)");
 
-
 //switch introduction pic
 const dot = document.getElementById("dot");
 const gaming = new Audio("sounds/gaming.ogg");
 var isPlaying = false;
-
 
 function addDot(){
   dot.classList.toggle('dotter');
@@ -28,34 +26,6 @@ gaming.addEventListener('ended', function() {
   gaming.currentTime = 0;
   gaming.play();
 }, false);
-
-// function switchpic() {
-//   switch (mainpic.innerHTML) {
-//     case '<img src="img/fashion/fashion1.png" alt="decorative">':
-//       mainpic.innerHTML =
-//         '<img src="img/fashion/fashion2.png" alt="decorative">';
-//       break;
-//     case '<img src="img/fashion/fashion2.png" alt="decorative">':
-//       mainpic.innerHTML =
-//         '<img src="img/fashion/fashion3.png" alt="decorative">';
-//       break;
-//     case '<img src="img/fashion/fashion3.png" alt="decorative">':
-//       mainpic.innerHTML =
-//         '<img src="img/fashion/fashion4.png" alt="decorative">';
-//       break;
-//     case '<img src="img/fashion/fashion4.png" alt="decorative">':
-//       mainpic.innerHTML =
-//         '<img src="img/fashion/fashion5.png" alt="decorative">';
-//       break;
-//     default:
-//       mainpic.innerHTML =
-//         '<img src="img/fashion/fashion1.png" alt="decorative">';
-//   }
-// }
-// setInterval(switchpic, 2000);
-
-
-
 
 // Show and hide about info
 function show() {
@@ -95,16 +65,15 @@ myFunction(blue);
 //Main Action
 
 const image = document.getElementById("image");
-const topText = document.getElementById("topText");
-const leftText = document.getElementById("left-text");
-const rightText = document.getElementById("right-text");
+const topText = document.getElementById("answer-text");
+const questionText = document.getElementById("question-text");
 const wronganswer = document.getElementById("wronganswer");
 const good = document.getElementById("good");
-// const firstPage = document.getElementById("first-page");
 const logOut = document.getElementById("logout");
 const imgContainer = document.getElementById('img-container');
 const after = document.getElementById('after');
-
+const check = document.getElementById('check');
+const remove = document.getElementById('remove');
 
 // Counter for index of arrays
 let place = 0;
@@ -112,81 +81,53 @@ let c;
 let d;
 
 // Arrays for top text and text on left and right
-const topTextArray = [
-  "Her name is Penelope.",
-  "She likes diving.",
-  "She goes to Egypt.",
-  "She lives in Barcelona.",
-  "She can speak five languages.",
-  "She's twenty years old.",
-  "Her hobby is reading.",
-  "She has a puppy called Pugsy.",
-  "She loves her red car.",
-  "She's good at chess.",
-  "She's a doctor.",
-  "She goes mountain biking.",
-  "He goes mountain biking."
+
+const problemSentences = [
+  "She are happy because it is her birthday.",
+  false,
+  "Luc and Pierre are playing football",
+  true,
+  "Where is the cinema is?",
+  false,
+  "Are you can swim?",
+  false,
+  "Are you from Spain?",
+  true,
+  "Are you like pizza?",
+  false,
+  "Dad at work today.",
+  false,
+  "Her cat is black?",
+  false,
+  "Blanquita is a white dog.",
+  true,
+  "Why are you crying?",
+  true,
+  "My brother and I am doing our homework.",
+  false,
+  "We are eating a picnic",
+  true,
+  "Is they from London?",
+  false,
+  "Are Ian and Martina on holiday this week?",
+  true,
+  "I am like tennis",
+  false
 ];
 
-const leftTextArray = [
-  "How her name is?",
-  false,
-  "What likes she?",
-  false,
-  "Where she go on holiday?",
-  false,
-  "Where does she live?",
-  true,
-  "What languages can she speak?",
-  true,
-  "How old is she?",
-  true,
-  "What is her hobby?",
-  true,
-  "Have she got a pet?",
-  false,
-  "Does she like her red car?",
-  true,
-  "She is good at table games?",
-  false,
-  "What do is she?",
-  false,
-  "What does she does at the weekend?",
-  false,
-  "",
-];
-
-const rightTextArray = [
-  "What is her name?",
-  true,
-  "What does she like?",
-  true,
-  "Where does she go on holiday?",
-  true,
-  "Where lives she?",
-  false,
-  "What languages know to speak?",
-  false,
-  "What old is she?",
-  false,
-  "What hobby she is?",
-  false,
-  "Has she got a pet?",
-  true,
-  "She likes her red car?",
-  false,
-  "Is she good at table games?",
-  true,
-  "What does she do?",
-  true,
-  "What does she do at the weekend?",
-  true,
-  "You DID IT!",
+const correctedSentences = [
+  "She is happy because it is her birthday.",
+  "Where is the cinema?",
+  "Can you swim?",
+  "Do you like pizza?",
+  "Dad is at work today.",
+  "Is her cat black?",
+  "My brother and I are doing our homework.",
+  "Are they from London?",
+  "I like tennis."
 ];
 
 // Remove the landing page and/or return user to the start
-
-
 function restarter(){
   window.location.reload();
 }
@@ -194,151 +135,75 @@ function restarter(){
 function begin() {
   place = -2;
   nextOne();
-  after.classList.remove('blue');
-  topText.style.visibility = "hidden";
-  logOut.style.visibility = "hidden";
-//   firstPage.style.display = "none";
-//   game.style.display = "flex";
-  wronganswer.style.display = "none";
-
 }
 
+function showNextArrow(){
+  logOut.style.visibility = "visible";
+}
 
+function showRightText(c){
+  topText.innerText = correctedSentences.shift();
+  console.log(topText.innerText);
+  showNextArrow();
+}
+
+function showCorrect(){
+  topText.innerText = "Correct";
+  showNextArrow();
+}
 
 // Move on to the next 'slide'.
-
 function nextOne() {
   place = place + 2;
-  console.log(place);
   d = place;
-  if (place > leftTextArray.length - 2){
-    leftText.innerHTML = "";
-    rightText.innerHTML = "";
+  if (place > problemSentences.length - 2){
+    questionText.innerHTML = "";
     good.style.display = "flex";
     wronganswer.style.display = "none";
-    after.classList.remove('blue');
+    after.classList.remove('overlay');
     setTimeout(restarter, 3000);
-
-  } else {
-    
-    
-  topText.innerText = topTextArray[d / 2];
-  
- 
-   {
-    leftText.innerText = leftTextArray[place];
-    rightText.innerText = rightTextArray[place];
-    image.src = `img/maze-peppa/slide${d / 2}.jpg`;
-  }
-}
-}
-
-// Check to see if the correct answer has been chosen
-
-
-function checkForMistakesOnLeft(clickedElement) {
-  // Check to see if game is on last page
-  if (topText.innerText === "He can swim") {
-    leftText.innerHTML = "";
-    rightText.innerHTML = "";
-    good.style.display = "flex";
-    wronganswer.style.display = "flex";
-        setTimeout(restarter, 3000);
-  } else {
-   
-    // Get innerText of clicked element and see if next item in its array is T or F
-    let a = clickedElement.innerText;
-    let b = leftTextArray.indexOf(a);
-    c = leftTextArray[b + 1];
- 
-
-    // Restart game if answer is F
-    if (c === false) {
-      wronganswer.style.display = "flex";
-    } else {
-      //Move on to next slide if answer is T
-      after.classList.add('blue');
-      topText.style.visibility = "visible";
-      logOut.style.visibility = "visible";
-      // game.style.display = "flex";
-      wronganswer.style.display = "none";
-            nextOne();
-    }
-  }
-}
-
-// Comments same as above
-// function checkForMistakesOnRight(clickedElement) {
-//   if (topText.innerText === "He can swim") {
-//     leftText.innerHTML = "";
-//     rightText.innerHTML = "";
-//     good.style.display = "flex";
-//     wronganswer.hidden = true;
-//   } else {
-//     let a = clickedElement.innerText;
-//     let b = rightTextArray.indexOf(a);
-//     c = rightTextArray[b + 1];
-
-//     if (c === false) {
-//       wronganswer.hidden = false;
-//     } else {
-//       after.classList.add('blue');
-//       topText.style.visibility = "visible";
-//       logOut.style.visibility = "visible";
-//     }
-//   }
-// }
-function checkForMistakesOnRight(clickedElement) {
-  if (topText.innerText === "He can swim") {
-    leftText.innerHTML = "";
-    rightText.innerHTML = "";
-    good.style.display = "flex";
-    wronganswer.style.display = "none";
-        setTimeout(restarter, 3000);
-  } else {
-    let a = clickedElement.innerText;
-    let b = rightTextArray.indexOf(a);
-    c = rightTextArray[b + 1];
-
-    if (c === false) {
-      wronganswer.hidden = false;
-    } else {
-      after.classList.add('blue');
-      topText.style.visibility = "visible";
-      logOut.style.visibility = "visible";
-    }
-  }
-}
-function checkForMistakesOnLeft(clickedElement) {
-  if (topText.innerText === "He can swim") {
-    leftText.innerHTML = "";
-    rightText.innerHTML = "";
-    good.style.display = "flex";
-    wronganswer.style.display = "none";
-        setTimeout(restarter, 2000);
-  } else {
-    let a = clickedElement.innerText;
-    let b = leftTextArray.indexOf(a);
-    c = leftTextArray[b + 1];
-
-    if (c === false) {
-      wronganswer.style.display = "flex";
-        } else {
-      after.classList.add('blue');
-      topText.style.visibility = "visible";
-      logOut.style.visibility = "visible";
-    }
-  }
-}
-
-function carryOn() {
-  after.classList.remove('blue');
+} else {
+  after.classList.remove('overlay');
   topText.style.visibility = "hidden";
   logOut.style.visibility = "hidden";
-  nextOne();
+  questionText.innerText = problemSentences[place];
+  image.src = `img/to-be-maze/slide${d/2}.jpg`;
+}
 }
 
-logOut.addEventListener("click", carryOn);
+// Check to see if clicked is correct or not
+function checkForWrong() { 
+  topText.innerText = "";
+    let c = problemSentences[place + 1];
+    if (c === false){
+      after.classList.add('overlay');
+      topText.style.visibility = "visible";
+     setTimeout(showRightText, 200);
+     
+    } else if (c === true) {
+      wronganswer.style.display = "flex";
+      setTimeout(restarter, 2000);
+  }
+}
+
+function checkForRight() {
+  topText.innerText = "";
+
+    c = problemSentences[place + 1];
+    if (c === true){
+      after.classList.add('overlay');
+      topText.style.visibility = "visible";
+      setTimeout(showCorrect, 200);
+    } else if (c === false) {
+      wronganswer.style.display = "flex";
+      setTimeout(restarter, 2000);
+    }
+  }
+
+logOut.addEventListener("click", nextOne);
 mainpic.addEventListener('click', addDot);
+remove.addEventListener('click', checkForWrong);
+check.addEventListener('click', checkForRight);
+
 
 begin();

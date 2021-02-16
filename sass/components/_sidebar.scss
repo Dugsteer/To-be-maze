@@ -141,10 +141,6 @@
   display: block;
 }
 
-.sidebar__subtitle:first-of-type {
-  background: #F75F1C;
-}
-
 .icon {
   margin-right: 3rem;
 }
@@ -175,7 +171,6 @@
   }
   @media only screen and(max-width: $bp-small){
     top: 60%;
-    origin: center;
     width: 320px;
     height: 700px;
   }
