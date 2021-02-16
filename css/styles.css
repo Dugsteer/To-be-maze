@@ -62,7 +62,8 @@ h4 {
 
 .sense-bottom {
   grid-row: 4/5;
-  grid-column: 2/3; }
+  grid-column: 2/3;
+  background-color: red; }
 
 .buttons {
   display: flex;
@@ -683,6 +684,7 @@ h4 {
   box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1);
   width: 800px;
   padding: 2rem 0;
+  margin-bottom: 2rem;
   grid-template-rows: 120px minmax(0, 1fr);
   grid-template-columns: 1fr; }
   @media only screen and (max-width: 62.5em) {
@@ -923,7 +925,7 @@ h4 {
   animation: animate 1.5s infinite; }
 
 .links {
-  grid-row: 5/6;
+  grid-row: 4/5;
   grid-column: 2/3;
   width: 800px;
   height: 500px;
